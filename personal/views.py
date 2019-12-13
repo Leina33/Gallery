@@ -1,54 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 import datetime as dt
 
 # Create your views here.
 def welcome(request):
-    return HttpResponse('This is my personal Gallery')
-def picture_of_day(request):
+    return render(request, 'welcome.html')
+
+def personal_of_day(request):
     date = dt.date.today()
-    #function to convert date object to find exact day
-    day = convert_dates(date) 
-   
-    html = f'''
-        <html>
-            <body>
-                <h1> Picture for {day} {date.day}-{date.month}-{date.year}</h1>
-            <body>
-            '''
-    return HttpResponse(html)
+    return render(request, 'all-personal/recent-personal.html', {"date": date,})
 
-def convert_dates(dates):
-    #Function that gets the weekday number for date.
-    day_number = dt.date.weekday(dates)
+#view Function to recent personal pictures old past days
+def past_days_personal(request, past_date):
 
-    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
-
-    # Returning the actual day of the week
-    day = days[day_number]
-    return day
-
-def past_days_personal(request,past_date):
-    
-    
-    
-    
     try:
         # Converts data from the string Url
-        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
-        
-    except valueError:
+        date = dt.datetime.strptime(past_date, '%Y-%m-%d').date()
+
+    except ValueError:
         # Raise 404 error when ValueError is thrown
         raise Http404()
-        
+        assert False
 
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+    if date == dt.date.today():
+        return redirect(news_of_day)
 
+    return render(request, 'all-personal/old-personal.html', {"date": date})
