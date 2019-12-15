@@ -15,6 +15,7 @@
         {% endblock %}
     </head>
     <body>
+        {% include "navbar.html" %}
         {% block content %}
          <h1 class ='text-center'>Personal photo  for {{date|date:"l d-F Y"}}</h1>
         {%endblock%}  
