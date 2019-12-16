@@ -24,6 +24,8 @@ class Image(models.Model):
     description = models.TextField()
     location = models.ForeignKey(Location)
     Category = models.ForeignKey(Category,db_column='category')
+    pub_date = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to = 'image/')
     
     @classmethod
     def search_by_category(cls,search_term):
