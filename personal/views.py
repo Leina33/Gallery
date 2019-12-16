@@ -7,7 +7,8 @@ from .models import Image
 
 def personal_of_day(request):
     date = dt.date.today()
-    return render(request, 'all-personal/recent-personal.html', {"date": date,})
+    images = Image.objects.all()
+    return render(request, 'all-personal/recent-personal.html', {"date": date, "images":images})
 
 #view Function to recent personal pictures old past days
 def past_days_personal(request, past_date):

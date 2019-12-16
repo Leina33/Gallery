@@ -6,13 +6,19 @@
 <div class="container">
 
     <!-- Looping through Photos -->
-    {% for personal_item in personal %}
+    {% for image in images %}
 
     <div class="row">
         <!-- displaying Personal Images -->
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <h2 class="text-center">{{personal_items.title }}</h2>
+            <h2 class="text-center">{{image.title }}</h2>
         </div>
+         <!--Display uploaded   images  -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+        </div>
+    
+      </div>
 
         {% empty %}
         <div class="row">
