@@ -1,14 +1,14 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 import datetime as dt
+from .models import Image
 
 # Create your views here.
-def welcome(request):
-    return render(request, 'welcome.html')
 
 def personal_of_day(request):
     date = dt.date.today()
-    return render(request, 'all-personal/recent-personal.html', {"date": date,})
+    personal = Image.todays_personal()
+    return render(request, 'all-personal/recent-personal.html', {"date": date,"personal":personal})
 
 #view Function to recent personal pictures old past days
 def past_days_personal(request, past_date):
