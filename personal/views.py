@@ -29,13 +29,20 @@ def past_days_personal(request, past_date):
     # search function
 def search_results(request):
 
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_articles = Image.search_by_description(search_term)
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Image.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-personal/search.html',{"message":message,"image": searched_image})
+        return render(request, 'all-personal/search.html',{"message":message,"image": searched_articles})
 
     else:
         message = "You haven't searched for any image"
         return render(request, 'all-personal/search.html',{"message":message})
+    
+def image(request,image_id):
+    try:
+        image = Image.objects.get(id = image_id)
+    except DoesNotExist:
+        raise Http404
+    return render(request,"all-personal/image.html", {"image":image})
