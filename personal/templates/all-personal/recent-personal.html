@@ -2,4 +2,25 @@
 
 {% block content %}
 {{block.super}}
+
+<div class="container">
+
+    <!-- Looping through Photos -->
+    {% for personal_item in personal %}
+
+    <div class="row">
+        <!-- displaying Personal Images -->
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class="text-center">{{personal_items.title }}</h2>
+        </div>
+
+        {% empty %}
+        <div class="row">
+            <!-- <h2 class="text-center">More Images to be added</h2> -->
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock %}
