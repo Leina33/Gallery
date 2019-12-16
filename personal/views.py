@@ -7,8 +7,7 @@ from .models import Image
 
 def personal_of_day(request):
     date = dt.date.today()
-    personal = Image.todays_personal()
-    return render(request, 'all-personal/recent-personal.html', {"date": date,"personal":personal})
+    return render(request, 'all-personal/recent-personal.html', {"date": date,})
 
 #view Function to recent personal pictures old past days
 def past_days_personal(request, past_date):
@@ -23,6 +22,5 @@ def past_days_personal(request, past_date):
         assert False
 
     if date == dt.date.today():
-        return redirect(news_of_day)
-
-    return render(request, 'all-personal/old-personal.html', {"date": date})
+        return redirect(personal_of_day)
+        return render(request, 'all-personal/old-personal.html', {"date": date,})
