@@ -14,7 +14,15 @@ class Location(models.Model):
     country = models.CharField(max_length = 60)
     
     def __str__(self):
-        return self.location
+        return self.country
+    
+    
+
+class Category(models.Model):
+    Category = models.CharField(max_length = 40)
+    
+    def __str__(self):
+        return self.Category
     
     
 
