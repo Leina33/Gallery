@@ -23,6 +23,7 @@ class Image(models.Model):
     name = models.CharField(max_length =60)
     description = models.TextField()
     location = models.ForeignKey(Location)
+    Category = models.ForeignKey(Category,db_column='category')
     
     
     def __str__(self):
