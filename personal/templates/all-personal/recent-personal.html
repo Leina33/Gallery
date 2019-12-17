@@ -4,48 +4,37 @@
 {{block.super}}
 
 <div class="container">
-
-    <!-- looping through photos -->
-    {% for image in images %}
-    <div class="row">
-        <div class="col-md-4">
-            <!-- display gallery category -->
-            <h2 class="text-center">{{image.title}}</h2>
-        </div>
         <div class="row">
-            <a class="image" data-toggle="modal" data-target='#{{image.id}}'><img src="{{image.image.url}}"
-                class="img-responsive" alt="Image" style="height:300px; width:400px;"> 
-            </a>
-            <br><br>
-        </div>
-
-        <!-- modal -->
-        <div id="{{image.id}}" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- modal-content -->
+          {% for image in images %}
+          <div class="modal fade" id="basicExampleModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">{{image.title}}</h3>
-                        <img class="img" style="height: 300px; width: 400px;" src="{{image.image.url}}"
-                            alt="{{image.image_name}}">
-                    </div>
-                    <div class="moday-body">
-                        <p>Description: {{image.description}}</p>
-                        <p>Location: {{image.location}}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                    {% empty %}
-                    <div class="row">
-                        <!-- nothing here -->
-
-                    </div>
-
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-family: 'Itim', cursive;">{{image.title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" >
+                          <img class="card-img-top " style="height:auto;width: 100%" id="img" class="mode" src="{{image.image.url}}" alt="Card image cap">
+                          <p style="font-family: 'Itim', cursive; color: black;">Description: {{image.description}} <br> Category: {{image.category}}</p>
+                  </div>
+                  <div class="modal-footer">
+                      <input type="text" value="{{image.image.url}}"id={{image.id}}.url>
+                  </div>
                 </div>
+              </div>
             </div>
+          <div class="col-md-4" style="box-shadow: 2px 2px 2px 2px grey;">
+              <h2 class="text-center"> {{ image.category }} </h2>
+              <img src="{{image.image.url}}" width="100%" height="auto" class="img-responsive" data-toggle="modal" data-target="#basicExampleModal{{image.id}}">
+             <br><br>
+             <center><a href="{{image.image.url}}" class="btn btn-primary">View Details</a></center><br><br>
+            </div>
+            {% endfor %}
         </div>
-    </div>
-</div>
-{% endfor %}
-{% endblock %}
+      </div>
+      {% endblock %}
+      
+      

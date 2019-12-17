@@ -6,3 +6,20 @@ h1
 {
   color: red;
 }
+
+.img-responsive{
+  height: auto;
+}
+.navbar-default {
+  background-color: darkcyan;
+  border-color: #E7E7E7;
+}
+.navbar-brand{
+  color:black;
+}
+
+.col-sm-6 col-md-3{
+  height: auto;
+  align-items: center;
+   
+}
