@@ -41,9 +41,8 @@ DATABASES = {
         'HOST': config('DB_HOST'),
         'PORT': '',
     }
-    
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+}
+ALLOWED_HOSTS=config('ALLOWED_HOSTS', cast=Csv())
 
 
 
