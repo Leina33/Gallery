@@ -32,16 +32,16 @@ SECRET_KEY = config('SECRET_KEY', default='ndy*(ui5+9uy*ii@wla#3e!hqvu=ee1to0182
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
-           'HOST': config('DB_HOST'),
-           'PORT': '',
-       }
-       
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': '',
+    }
+    
 
 
 db_from_env = dj_database_url.config(conn_max_age=500)
