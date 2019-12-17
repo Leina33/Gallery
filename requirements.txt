@@ -1,3 +1,4 @@
+
 beautifulsoup4==4.8.1
 bootstrap4==0.1.0
 dj-database-url==0.5.0
