@@ -5,33 +5,47 @@
 
 <div class="container">
 
-    <!-- Looping through Photos -->
+    <!-- looping through photos -->
     {% for image in images %}
-
     <div class="row">
-        <!-- displaying Personal Images -->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <h2 class="text-center">{{image.title }}</h2>
+        <div class="col-md-4">
+            <!-- display gallery category -->
+            <h2 class="text-center">{{image.title}}</h2>
         </div>
-         <!--Display uploaded   images  -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <img src="{{image.image.url}}" class="img-responsive" alt="Image">
-
-
-            <p> {{image.name}}</p>
-            <p> {{image.location}}</p>
-            <p> {{image.description}}</p>
-        </div>
-    
-      </div>
-
-        {% empty %}
         <div class="row">
-            <!-- <h2 class="text-center">More Images to be added</h2> -->
+            <a class="image" data-toggle="modal" data-target='#{{image.id}}'><img src="{{image.image.url}}"
+                class="img-responsive" alt="Image" style="height:300px; width:400px;"> 
+            </a>
+            <br><br>
         </div>
-        {% endfor %}
+
+        <!-- modal -->
+        <div id="{{image.id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- modal-content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">{{image.title}}</h3>
+                        <img class="img" style="height: 300px; width: 400px;" src="{{image.image.url}}"
+                            alt="{{image.image_name}}">
+                    </div>
+                    <div class="moday-body">
+                        <p>Description: {{image.description}}</p>
+                        <p>Location: {{image.location}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    {% empty %}
+                    <div class="row">
+                        <!-- nothing here -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
+{% endfor %}
 {% endblock %}
