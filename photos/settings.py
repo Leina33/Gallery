@@ -31,7 +31,8 @@ SECRET_KEY = config('SECRET_KEY', default='ndy*(ui5+9uy*ii@wla#3e!hqvu=ee1to0182
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-
+#development
+if MODE=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
