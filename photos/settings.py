@@ -63,6 +63,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 INSTALLED_APPS = [
     'personal',
     'bootstrap4',
+    'pyuploadcare.dj',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -100,6 +101,10 @@ TEMPLATES = [
         },
     },
 ]
+UPLOADCARE = {
+    'pub_key':'0ebc026763bb70190109',
+    'secret': '93e8bf1f86cf700bf56a',
+}
 
 WSGI_APPLICATION = 'photos.wsgi.application'
 

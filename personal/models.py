@@ -1,4 +1,5 @@
 from django.db import models
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 
@@ -44,7 +45,7 @@ class Image(models.Model):
     location = models.ForeignKey(Location)
     category_key = models.ForeignKey(Category,db_column='category')
     pub_date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to = 'image/')
+    image = ImageField(blank=True, manual_crop="")
     
     @classmethod
     def search_by_category(cls,search_term):

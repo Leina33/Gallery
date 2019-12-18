@@ -17,21 +17,21 @@
                     </button>
                   </div>
                   <div class="modal-body" >
-                      <img class="card-img-top " style="height:auto;width: 100%" id="img" class="mode" src="{{image.image.url}}" alt="Card image cap">
+                      <img class="card-img-top " style="height:auto;width: 100%" id="img" class="mode" src="{{image.image.cdn_url}}" alt="Card image cap">
                           
                           <p style="font-family: 'Itim', cursive; color: black;">Description: {{image.description}} <br> Category: {{image.category}}</p>
                   </div>
                   <div class="modal-footer">
-                      <input type="text" value="{{image.image.url}}"id={{image.id}}.url>
+                      <input type="text" value="{{image.image.cdn_url}}"id={{image.id}}.url>
                   </div>
                 </div>
               </div>
             </div>
           <div class="col-md-4" style="box-shadow: 2px 2px 2px 2px grey;">
               <h2 class="text-center"> {{ image.category }} </h2>
-              <img src="{{image.image.url}}" width="100%" height="auto" class="img-responsive" data-toggle="modal" data-target="#basicExampleModal{{image.id}}">
+              <img src="{{image.image.cdn_url}}" width="100%" height="auto" class="img-responsive" data-toggle="modal" data-target="#basicExampleModal{{image.id}}">
              <br><br>
-             <center><a href="{{image.image.url}}" class="btn btn-primary">View Details</a></center><br><br>
+             <center><a href="{{image.image.cdn_url}}" class="btn btn-primary">View Details</a></center><br><br>
             </div>
             {% endfor %}
         </div>
